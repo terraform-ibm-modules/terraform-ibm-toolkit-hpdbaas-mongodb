@@ -5,7 +5,7 @@ variable "resource_group_name" {
   description = "Existing resource group where the IKS cluster will be provisioned."
 }
 
-variable "hpcs-resource-group" {
+variable "hpcs_resource_group_name" {
   type        = string
   description = "The resource group where the hpcs instance has been provisioned. If not provided defaults to the same resource group as the MongoDB instance"
   
@@ -21,40 +21,26 @@ variable "region" {
   description = "Region for VLANs defined in private_vlan_number and public_vlan_number."
 }
 
-variable "namespace" {
-  type        = string
-  description = "Namespace for tools"
-}
-
-variable "cluster_name" {
-  type        = string
-  description = "The name of the cluster"
-  default     = ""
-}
-
-variable "cluster_type" {
-  type        = string
-  description = "The type of cluster that should be created (openshift or kubernetes)"
-}
 variable "name_prefix" {
   type        = string
   description = "Prefix name that should be used for the cluster and services. If not provided then resource_group_name will be used"
   default     = ""
 }
-variable "hpcs-region" {
+
+variable "hpcs_region" {
   type        = string
   description = "The region where the Key Protect instance has been provisioned"
   default     = ""
 }
 
-variable "hpcs-name" {
+variable "hpcs_name" {
   type        = string
   description = "The name of the Key Protect instance"
   default     = ""
 }
 
-variable "hpcs-key" {
+variable "kms_key_name" {
   type        = string
-  description = "The name of the key in the Key Protect instance"
-  default     = ""
+  description = "The name pf the kms key"
+  default     = "test-key"
 }
