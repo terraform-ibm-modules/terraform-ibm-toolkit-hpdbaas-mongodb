@@ -9,5 +9,5 @@ module "hpdbaas_mongodb" {
   hpcs_key            = module.hpcs_key.id
   cluster_name        = "test"
   admin_name          = "admin"
-  password            = "password"
+  password            = "M4C0mpl3xP@ssw0rd"
 }
