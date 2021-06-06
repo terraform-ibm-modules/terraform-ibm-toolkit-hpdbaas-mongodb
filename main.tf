@@ -45,12 +45,6 @@ resource "ibm_resource_instance" "hyperp-dbaas-mongodb_instance" {
   resource_group_id = data.ibm_resource_group.resource_group.id
   tags              = var.tags
   parameters        = local.parameters
-
-  timeouts {
-    create = "60m"
-    update = "15m"
-    delete = "15m"
-  }
 }
 
 data "ibm_resource_instance" "hyperp-dbaas-mongodb_instance" {
