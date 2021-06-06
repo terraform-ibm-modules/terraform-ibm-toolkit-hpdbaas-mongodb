@@ -8,10 +8,15 @@ variable "resource_group_name" {
   description = "Resource group where the cluster has been provisioned."  
 }
 
-variable "resource_location" {
+variable "region" {
   type        = string
   description = "Geographic location of the resource (e.g. us-south, us-east)"
-  #default = "us-south"
+}
+
+variable "provision" {
+  type        = bool
+  description = "Flag indicating that the instance should be provisioned. If false then it assumed that an instance already exists."
+  default     = true
 }
 
 variable "tags" {
@@ -23,14 +28,20 @@ variable "tags" {
 variable "name_prefix" {
   type        = string
   description = "The prefix name for the service. If not provided it will default to the resource group name"
-  #default     = ""
+  default     = ""
+}
+
+variable "label" {
+  type        = string
+  description = "The label used to build the database name, along with the name_prefix"
+  default     = "hpdbaas-mongodb"
 }
 
 # mongodb-flexible or mongodb-free
 variable "plan" {
   type        = string
   description = "The type of plan the service instance should run under (mongodb-free,mongodb-flexible)"
-  #default     = "mongodb-free"
+  default     = "mongodb-free"
 }
 
 variable "private_endpoint" {
@@ -45,58 +56,31 @@ variable "role" {
   default     = "Editor"
 }
 
-variable "hpcs-region" {
+variable "hpcs_instance_id" {
   type        = string
-  description = "The region where the hpcs instance has been provisioned. If not provided defaults to the same region as the MongoDB instance"
-  
+  description = "The id of the hpcs instance"
+  default     = ""
 }
 
-variable "hpcs-resource-group" {
-  type        = string
-  description = "The resource group where the hpcs instance has been provisioned. If not provided defaults to the same resource group as the MongoDB instance"
-  
-}
-
-variable "hpcs-name" {
-  type        = string
-  description = "The name of the hpcs instance"
-  
-}
-
-variable "hpcs-key" {
+variable "hpcs_key" {
   type        = string
   description = "The id of the key in the hpcs instance"
-  #default     = "d9d7811e-afd5-41dd-89da-c472b89fd896"
-}
-
-variable "authorize-kms" {
-  type        = bool
-  description = "Flag indicating that the authorization for Hyper Protect DBaaS for MongoDB to read keys in the KMS should be created"
-  default     = false
+  default     = ""
 }
 
 variable "cluster_name" {
   type        = string
-  description = "The name of the cluster"
-  #default     = "dbaas-cluster"
+  description = "The name of the database cluster"
 }
 
 variable "admin_name" {
   type        = string
   description = "The name of the database admin"
-  #default     = "admin"
 }
 
 variable "password" {
   type        = string
   description = "The password of database admin(15 characters minimum, at least one uppercase character, one lowercase character and one number)"
-  #default     = "Workstation*123"
-}
-
-variable "confirm_password" {  
-  type        = string
-  description = "The confirm-password of database admin(15 characters minimum, at least one uppercase character, one lowercase character and one number)"
-  #default     = "Workstation*123"
 }
 
 variable "storage" {
@@ -116,5 +100,3 @@ variable "cpu" {
   description = "The name of the database admin"
   default     = "1"
 }
-
-
