@@ -5,6 +5,12 @@ variable "resource_group_name" {
   description = "Existing resource group where the IKS cluster will be provisioned."
 }
 
+variable "hpcs-resource-group" {
+  type        = string
+  description = "The resource group where the hpcs instance has been provisioned. If not provided defaults to the same resource group as the MongoDB instance"
+  
+}
+
 variable "ibmcloud_api_key" {
   type        = string
   description = "The api key for IBM Cloud access"
@@ -30,38 +36,24 @@ variable "cluster_type" {
   type        = string
   description = "The type of cluster that should be created (openshift or kubernetes)"
 }
-
-variable "cluster_exists" {
-  type        = string
-  description = "Flag indicating if the cluster already exists (true or false)"
-  default     = "true"
-}
-
 variable "name_prefix" {
   type        = string
   description = "Prefix name that should be used for the cluster and services. If not provided then resource_group_name will be used"
   default     = ""
 }
-
-variable "vpc_cluster" {
-  type        = bool
-  description = "Flag indicating that this is a vpc cluster"
-  default     = false
-}
-
-variable "key-protect-region" {
+variable "hpcs-region" {
   type        = string
   description = "The region where the Key Protect instance has been provisioned"
   default     = ""
 }
 
-variable "key-protect-name" {
+variable "hpcs-name" {
   type        = string
   description = "The name of the Key Protect instance"
   default     = ""
 }
 
-variable "key-protect-key" {
+variable "hpcs-key" {
   type        = string
   description = "The name of the key in the Key Protect instance"
   default     = ""

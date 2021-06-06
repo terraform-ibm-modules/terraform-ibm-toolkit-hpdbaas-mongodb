@@ -1,11 +1,17 @@
+variable "ibmcloud_api_key" {
+  type        = string
+  description = "The api key for IBM Cloud access"
+} 
+
 variable "resource_group_name" {
   type        = string
-  description = "Resource group where the cluster has been provisioned."
+  description = "Resource group where the cluster has been provisioned."  
 }
 
 variable "resource_location" {
   type        = string
   description = "Geographic location of the resource (e.g. us-south, us-east)"
+  #default = "us-south"
 }
 
 variable "tags" {
@@ -17,13 +23,20 @@ variable "tags" {
 variable "name_prefix" {
   type        = string
   description = "The prefix name for the service. If not provided it will default to the resource group name"
-  default     = ""
+  #default     = ""
 }
 
+# mongodb-flexible or mongodb-free
 variable "plan" {
   type        = string
-  description = "The type of plan the service instance should run under (standard)"
-  default     = "standard"
+  description = "The type of plan the service instance should run under (mongodb-free,mongodb-flexible)"
+  #default     = "mongodb-free"
+}
+
+variable "private_endpoint" {
+  type        = string
+  description = "Flag indicating that the service should be created with private endpoints"
+  default     = "true"
 }
 
 variable "role" {
@@ -32,32 +45,76 @@ variable "role" {
   default     = "Editor"
 }
 
-variable "key-protect-region" {
+variable "hpcs-region" {
   type        = string
-  description = "The region where the Key Protect instance has been provisioned. If not provided defaults to the same region as the MongoDB instance"
-  default     = ""
+  description = "The region where the hpcs instance has been provisioned. If not provided defaults to the same region as the MongoDB instance"
+  
 }
 
-variable "key-protect-resource-group" {
+variable "hpcs-resource-group" {
   type        = string
-  description = "The resource group where the Key Protect instance has been provisioned. If not provided defaults to the same resource group as the MongoDB instance"
-  default     = ""
+  description = "The resource group where the hpcs instance has been provisioned. If not provided defaults to the same resource group as the MongoDB instance"
+  
 }
 
-variable "key-protect-name" {
+variable "hpcs-name" {
   type        = string
-  description = "The name of the Key Protect instance"
-  default     = ""
+  description = "The name of the hpcs instance"
+  
 }
 
-variable "key-protect-key" {
+variable "hpcs-key" {
   type        = string
-  description = "The name of the key in the Key Protect instance"
-  default     = ""
+  description = "The id of the key in the hpcs instance"
+  #default     = "d9d7811e-afd5-41dd-89da-c472b89fd896"
 }
 
 variable "authorize-kms" {
   type        = bool
-  description = "Flag indicating that the authorization for MongoDB to read keys in the KMS should be created"
+  description = "Flag indicating that the authorization for Hyper Protect DBaaS for MongoDB to read keys in the KMS should be created"
   default     = false
 }
+
+variable "cluster_name" {
+  type        = string
+  description = "The name of the cluster"
+  #default     = "dbaas-cluster"
+}
+
+variable "admin_name" {
+  type        = string
+  description = "The name of the database admin"
+  #default     = "admin"
+}
+
+variable "password" {
+  type        = string
+  description = "The password of database admin(15 characters minimum, at least one uppercase character, one lowercase character and one number)"
+  #default     = "Workstation*123"
+}
+
+variable "confirm_password" {  
+  type        = string
+  description = "The confirm-password of database admin(15 characters minimum, at least one uppercase character, one lowercase character and one number)"
+  #default     = "Workstation*123"
+}
+
+variable "storage" {
+  type        = string
+  description = "The name of the database admin"
+  default     = "5GiB"
+}
+
+variable "memory" {
+  type        = string
+  description = "The name of the database admin"
+  default     = "3GiB"
+}
+
+variable "cpu" {
+  type        = string
+  description = "The name of the database admin"
+  default     = "1"
+}
+
+
