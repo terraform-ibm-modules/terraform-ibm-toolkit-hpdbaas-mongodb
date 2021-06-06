@@ -7,7 +7,6 @@ module "hpdbaas_mongodb" {
   name_prefix         = "${var.name_prefix}_2"
   hpcs_instance_id    = module.hpcs_key.kms_id
   hpcs_key            = module.hpcs_key.id
-  authorize-kms       = var.authorize-kms == "true"
   cluster_name        = "test"
   admin_name          = "admin"
   password            = "password"

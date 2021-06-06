@@ -58,9 +58,3 @@ variable "hpcs-key" {
   description = "The name of the key in the Key Protect instance"
   default     = ""
 }
-
-variable "authorize-kms" {
-  type        = string
-  description = "Flag indicating that the authorization for MongoDB to read keys in the KMS should be created"
-  default     = "true"
-}
