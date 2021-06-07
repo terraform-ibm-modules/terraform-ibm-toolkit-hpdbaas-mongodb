@@ -41,7 +41,7 @@ variable "label" {
 variable "plan" {
   type        = string
   description = "The type of plan the service instance should run under (mongodb-free, mongodb-flexible)"
-  default     = "mongodb-flexible"
+  default     = "mongodb-free"
 }
 
 variable "private_endpoint" {
