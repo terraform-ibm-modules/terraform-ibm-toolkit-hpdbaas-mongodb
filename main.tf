@@ -4,7 +4,7 @@ resource null_resource print_names {
   }
 }
 
-data "ibm_resource_group" "resource_group" {
+data ibm_resource_group resource_group {
   depends_on = [null_resource.print_names]
 
   name = var.resource_group_name
@@ -35,7 +35,7 @@ resource null_resource print_params {
   }
 }
 
-resource "ibm_resource_instance" "hyperp-dbaas-mongodb_instance" {
+resource ibm_resource_instance hyperp-dbaas-mongodb_instance {
   count = var.provision ? 1 : 0
 
   name              = local.name
@@ -47,7 +47,7 @@ resource "ibm_resource_instance" "hyperp-dbaas-mongodb_instance" {
   parameters        = local.parameters
 }
 
-data "ibm_resource_instance" "hyperp-dbaas-mongodb_instance" {
+data ibm_resource_instance hyperp-dbaas-mongodb_instance {
   depends_on        = [ibm_resource_instance.hyperp-dbaas-mongodb_instance]
 
   name              = local.name
