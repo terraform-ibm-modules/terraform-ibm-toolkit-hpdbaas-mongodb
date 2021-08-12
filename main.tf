@@ -29,12 +29,6 @@ locals {
   }
 }
 
-resource null_resource print_params {
-  provisioner "local-exec" {
-    command = "echo \"parameters: ${jsonencode(local.parameters)}\""
-  }
-}
-
 resource ibm_resource_instance hyperp-dbaas-mongodb_instance {
   count = var.provision ? 1 : 0
 
@@ -45,6 +39,13 @@ resource ibm_resource_instance hyperp-dbaas-mongodb_instance {
   resource_group_id = data.ibm_resource_group.resource_group.id
   tags              = var.tags
   parameters        = local.parameters
+
+  //User can increase timeouts
+  timeouts {
+    create = "30m"
+    update = "30m"
+    delete = "30m"
+  }
 }
 
 data ibm_resource_instance hyperp-dbaas-mongodb_instance {
