@@ -1,5 +1,5 @@
 id: github.com/cloud-native-toolkit/terraform-ibm-hpdbaas-mongodb
-name: ibm-mongodb
+name: ibm-hpdbaas-mongodb
 type: terraform
 description: Module to provision Hyper Protect DBaaS for MongoDB instance
 tags:
@@ -14,6 +14,10 @@ versions:
         refs:
           - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
             version: ">= 2.1.0"
+      - id: kms_key
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-kms-key
+            version: ">= 0.0.0"
     variables:
       - name: resource_group_name
         moduleRef:
@@ -21,6 +25,14 @@ versions:
           output: name
         type: string
         description: Resource group where the cluster has been provisioned.
+      - name: hpcs_instance_id
+        moduleRef:
+          id: kms_key
+          output: kms_id
+      - name: hpcs_key
+        moduleRef:
+          id: kms_key
+          output: id
       - name: ibmcloud_api_key
         scope: global
         type: string
