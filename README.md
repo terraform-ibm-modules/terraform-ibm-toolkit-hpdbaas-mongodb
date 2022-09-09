@@ -1,3 +1,24 @@
+# HPDBAAS-MongoDB module
+
+Terraform module to provision an instance of HPDBAAS-MongoDB in cloud account.
+
+## Software dependencies
+
+The module depends on the following software components:
+
+### Command-line tools
+
+- terraform - v12
+- kubectl
+
+### Terraform providers
+
+- IBM Cloud provider >= 1.5.3
+
+## Module dependencies
+
+None
+
 
 ## Example usage
 
