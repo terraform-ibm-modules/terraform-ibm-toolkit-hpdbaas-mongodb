@@ -29,11 +29,11 @@ locals {
   }
 }
 
-resource null_resource print_params {
-  provisioner "local-exec" {
-    command = "echo \"parameters: ${jsonencode(local.parameters)}\""
-  }
-}
+# resource null_resource print_params {
+#   provisioner "local-exec" {
+#     command = "echo \"parameters: ${jsonencode(local.parameters)}\""
+#   }
+# }
 
 resource ibm_resource_instance hyperp-dbaas-mongodb_instance {
   count = var.provision ? 1 : 0
