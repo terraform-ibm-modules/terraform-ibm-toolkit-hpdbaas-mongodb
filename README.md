@@ -1,6 +1,6 @@
 # HPDBAAS-MongoDB module
 
-Terraform module to provision an instance of HPDBAAS-MongoDB
+Terraform module to provision an instance of HPDBAAS-MongoDB in cloud account.
 
 ## Software dependencies
 
