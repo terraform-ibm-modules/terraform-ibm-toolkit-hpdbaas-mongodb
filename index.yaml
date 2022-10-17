@@ -1,5 +1,5 @@
 id: github.com/terraform-ibm-modules/terraform-ibm-toolkit-hpdbaas-mongodb
-name: ibm-mongodb
+name: ibm-hpdbaas-mongodb
 type: terraform
 description: Module to provision Hyper Protect DBaaS for MongoDB instance
 tags:
