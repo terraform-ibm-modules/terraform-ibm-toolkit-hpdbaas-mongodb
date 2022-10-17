@@ -1,4 +1,4 @@
-name: ibm-mongodb
+name: ibm-hpdbaas-mongodb
 type: terraform
 description: Module to provision Hyper Protect DBaaS for MongoDB instance
 tags:
